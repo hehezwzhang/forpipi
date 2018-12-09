@@ -9,20 +9,16 @@
 </head>
 <body>
 <title>我们的故事，未完待续...</title>
-        <br/>
         <div style="display: flex; justify-content: center; align-items: center;">
+        <h1>我们已经在一起:</h1>
         <span id="timeid1" style="font-size:35px">
         </span>
-        <img src="天.png" width=50/>
         <span id="timeid2" style="font-size:35px">
         </span>
-        <img src="小时.png" width=85/>
         <span id="timeid3" style="font-size:35px">
         </span>
-        <img src="分钟.png" width=85/>
         <span id="timeid4" style="font-size:35px">
         </span>
-        <img src="秒.png" width=50/>
         </div>
 
         <script type="text/javascript">
@@ -40,10 +36,10 @@
                 var hs = document.getElementById("timeid2");
                 var ms = document.getElementById("timeid3");
                 var ss = document.getElementById("timeid4");
-                ds.innerHTML = days;
-                hs.innerHTML = hours;
-                ms.innerHTML = minutes;
-                ss.innerHTML = seconds;
+                ds.innerHTML = days + '天';
+                hs.innerHTML = hours + '小时';
+                ms.innerHTML = minutes + '分';
+                ss.innerHTML = seconds + '秒';
 
 
             }
