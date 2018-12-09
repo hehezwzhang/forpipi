@@ -18,6 +18,6 @@ from django.urls import path
 from pipi import views as pipi_views
 
 urlpatterns = [
-    path('', pipi_views.index),
+    path('', pipi_views.home),
     path('admin/', admin.site.urls),
 ]

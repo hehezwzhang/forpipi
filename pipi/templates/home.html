@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AutoType</title>
+</head>
+<body>
+<title>我们的故事，未完待续...</title>
+        <br/>
+        <div style="display: flex; justify-content: center; align-items: center;">
+        <span id="timeid1" style="font-size:35px">
+        </span>
+        <img src="天.png" width=50/>
+        <span id="timeid2" style="font-size:35px">
+        </span>
+        <img src="小时.png" width=85/>
+        <span id="timeid3" style="font-size:35px">
+        </span>
+        <img src="分钟.png" width=85/>
+        <span id="timeid4" style="font-size:35px">
+        </span>
+        <img src="秒.png" width=50/>
+        </div>
+
+        <script type="text/javascript">
+            function loveTime() {
+                var date = new Date() - new Date(2018,1,25,0,15,0)
+                var days = Math.floor(date / 1000 / 60 / 60 / 24) // 从这里开始
+                var daysmod = date - days * 24 *60 * 60 * 1000
+                var hours = Math.floor(daysmod / 1000 / 60 / 60)
+                var hoursmod = date - (days * 24 *60 * 60 * 1000) - (hours * 1000 * 60 * 60)
+                var minutes = Math.floor(hoursmod / 1000 / 60)
+                var minutesmod = date - (days * 24 *60 * 60 * 1000) - (hours * 1000 * 60 * 60) - (minutes * 1000 * 60)
+                var seconds = Math.floor(minutesmod / 1000) // 到这里结束，是将总毫秒转化成对应天数+小时数+分钟数+秒数的转换方法
+                var daysshow = document.getElementById("timdid1");
+                var ds = document.getElementById("timeid1");
+                var hs = document.getElementById("timeid2");
+                var ms = document.getElementById("timeid3");
+                var ss = document.getElementById("timeid4");
+                ds.innerHTML = days;
+                hs.innerHTML = hours;
+                ms.innerHTML = minutes;
+                ss.innerHTML = seconds;
+
+
+            }
+            // 使用定时器实现每一秒写一次时间
+            setInterval("loveTime();",1000);
+
+        </script>
+<div id="autotype"></div>
+<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $.fn.autotype = function (str, speed) {
+        var self = this,
+                defaultStr = '<p>2017年10月4日.</p><br>' +
+                    '<p>一次不经意的桌游，与你相识.</p><br>' +
+                    '<p>2017年11月21日.</p><br>' +
+                    '<p>一条朋友圈不经意的回复，走近你的生活.</p><br>' +
+                    '<p>2018年2月25日.</p><br>' +
+                    '<p>一句发自肺腑的告白，我们在一起了.</p><br>' +
+                    tab('2018-02-25'),//将要添加的元素的默认内容
+                defaultSpeed = 100,
+                str = str || defaultStr,
+                speed = speed || defaultSpeed,
+                index = 0,
+                timer = setInterval(function () {
+                    var current = str.substr(index, 1);
+                    if (current == '<') {
+                        index = str.indexOf('>', index) + 1;
+                    } else {
+                        index++;
+                    }
+                    self.html(str.substring(0, index) + ( (index & 1) && (index != str.length) ? '_' : ''));
+                    if (index >= str.length) {
+                        clearInterval(timer);
+                    }
+                }, speed);
+    };
+    $("#autotype").autotype();
+
+
+    function tab(date){
+        var oDate = new Date();
+        var nY = oDate.getFullYear();
+        var nM = oDate.getMonth();
+        var nD = oDate.getDate();
+        var newDate = new Date(nY,nM,nD,0,0,0);
+        var date = date.split('-');
+        var lastDate = new Date(date[0],(date[1]-1),date[2],0,0,0);
+        var result = '';
+        if(newDate.getTime() > lastDate.getTime()){
+            result = date[0]+'年'+date[1]+'月'+date[2]+'日到今天已经过去了'
+                + (newDate.getTime()-lastDate.getTime())/86400000 +'天了';
+        }else{
+            result = date[0]+'年'+date[1]+'月'+date[2]+'日到今天还有'
+                + Math.abs(newDate.getTime()-lastDate.getTime())/86400000 +'天了';
+        }
+        return result;
+    }
+</script>
+</body>
+</html>
