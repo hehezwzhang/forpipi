@@ -6,21 +6,23 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>我们的故事，未完待续...</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+<div class="header">
     <div id="total" style="background-color: darkseagreen; width: 100%; height: 1000px;">
-        <div style="display: flex; justify-content: center; align-items: center;">
-            <span style="font-size:35em">我们已经在一起:</span>
-            <span id="timeid1" style="font-size:35em">
+        <div >
+            <span >我们已经在一起:</span>
+            <span id="timeid1" >
 
             </span>
-            <span id="timeid2" style="font-size:35em">
+            <span id="timeid2" >
 
             </span>
-            <span id="timeid3" style="font-size:35em">
+            <span id="timeid3" >
 
             </span>
-            <span id="timeid4" style="font-size:35em">
+            <span id="timeid4" >
 
             </span>
         </div>
@@ -51,17 +53,18 @@
             setInterval("loveTime();",1000);
 
         </script>
+        <div class="topplayer"></div>
         <div id="autotype" ></div>
         <script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
         <script>
             $.fn.autotype = function (str, speed) {
                 var self = this,
-                        defaultStr = '<p>2017年10月4日.</p><br>' +
-                            '<p>一次不经意的桌游，与你相识.</p><br>' +
-                            '<p>2017年11月21日.</p><br>' +
-                            '<p>一条朋友圈不经意的回复，走近你的生活.</p><br>' +
-                            '<p>2018年2月25日.</p><br>' +
-                            '<p>一句发自肺腑的告白，我们在一起了.</p><br>' +
+                        defaultStr = '<li>2017年10月4日.</li><br>' +
+                            '<li>一次不经意的桌游，与你相识.</li><br>' +
+                            '<li>2017年11月21日.</li><br>' +
+                            '<li>一条朋友圈不经意的回复，走近你的生活.</li><br>' +
+                            '<li>2018年2月25日.</li><br>' +
+                            '<li>一句发自肺腑的告白，我们在一起了.</li><br>' +
                             tab('2018-02-25'),//将要添加的元素的默认内容
                         defaultSpeed = 100,
                         str = str || defaultStr,
